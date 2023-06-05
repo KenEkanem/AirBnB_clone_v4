@@ -17,4 +17,14 @@ $(function (){
       $('.amenities h4').prop('outerHTML', '<h4>&nbsp;</h4>');
     }
   });
-})
+  $.ajax({
+    type: 'GET',
+    url: 'http://0.0.0.0:5001/api/v1/status/',
+    success: function (api_status){
+      if (api_status.status === 'OK')
+        $('#api_status').addClass('available');
+      else
+        $('#api_status').removeClass('available');
+    }
+  });
+});
