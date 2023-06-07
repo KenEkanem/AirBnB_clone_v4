@@ -38,11 +38,25 @@ $(function (){
     contentType: "application/json",
     success: function (list_places){
       list_places.forEach(function (place){
-	$section.append('<article></article>');
-	$('section.places>article')
+	$section.append(`
+	<article> 
+		<div class="title_box">
+			<h2>${place.name}</h2>
+			<div class="price_by_night">$${place.price_by_night}</div>
+		</div>
+		<div class="information">
+			<div class="max_guest">${place.max_guest} Guest${(place.max_guest != 1 && "s") || ""}</div>
+			<div class="number_rooms">${place.number_rooms} Bedroom${(place.number_rooms != 1 && "s") || ""}</div>
+			<div class="number_bathrooms">${place.number_bathrooms} Bathroom${(place.number_bathrooms != 1 && "s") || ""}</div>
+		</div>
+		<div class="description">
+			${place.description}
+		</div>
+	</article>`);
+	/*$('section.places>article')
 	 .append('<div class="title_box"></div>')
 	 .append('<div class="information"></div>')
-	 /*.append(`<div class="user"><b>Owner:</b>${place.user.first_name} ${place.user.last_name}</div>`)*/
+	 .append(`<div class="user"><b>Owner:</b>${place.user.first_name} ${place.user.last_name}</div>`)
 	 .append(`<div class="description">${place.description}</div>`);
 	$('.places>article .title_box')
 	 .append(`<h2>${place.name}</h2>`)
@@ -50,7 +64,7 @@ $(function (){
 	$('.places>article .information')
 	 .append(`<div class="max_guest">${place.max_guest} Guest${(place.max_guest != 1 && "s") || ""}</div>`)
 	 .append(`<div class="number_rooms">${place.number_rooms} Bedroom${(place.number_rooms != 1 && "s") || ""}</div>`)
-	 .append(`<div class="number_bathrooms">${place.number_bathrooms} Bathroom${(place.number_bathrooms != 1 && "s") || ""}</div>`)
+	 .append(`<div class="number_bathrooms">${place.number_bathrooms} Bathroom${(place.number_bathrooms != 1 && "s") || ""}</div>`)*/
       });
     }
   });
