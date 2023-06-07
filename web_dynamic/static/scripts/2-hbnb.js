@@ -1,6 +1,7 @@
 $(function (){
   let $amenChkbx = $('.amenities .popover input');
   let newMap = new Map();
+  $amenChkbx.prop('checked', false);
   $amenChkbx.on('change', function (){
     if ($(this).prop('checked') === true)
       newMap.set($(this).data('id'), $(this).data('name'));
